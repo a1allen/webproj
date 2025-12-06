@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class WebProjController {
 
-    @GetMapping("/")
+    @GetMapping("/stats")
     public String home() {
-        return "index";
+        MemoryInfo memory = SystemStats.getMemoryInfo();
+        return "stats";
     }
 }
