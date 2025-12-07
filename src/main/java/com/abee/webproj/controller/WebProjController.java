@@ -1,4 +1,4 @@
-package com.abee.webproj;
+package com.abee.webproj.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,6 @@ public class WebProjController {
 
     @GetMapping("/stats")
     public String home() {
-        Memory memory = SystemStats.getMemory();
         return "stats";
     }
 }

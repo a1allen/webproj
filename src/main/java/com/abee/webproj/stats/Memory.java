@@ -1,4 +1,4 @@
-package com.abee.webproj;
+package com.abee.webproj.stats;
 
 public class Memory {
     private long totalRAM;
