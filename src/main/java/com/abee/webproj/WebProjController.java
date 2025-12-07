@@ -8,7 +8,7 @@ public class WebProjController {
 
     @GetMapping("/stats")
     public String home() {
-        MemoryInfo memory = SystemStats.getMemoryInfo();
+        Memory memory = SystemStats.getMemory();
         return "stats";
     }
 }
