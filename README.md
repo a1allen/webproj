@@ -40,6 +40,5 @@ A simple Spring Boot web application that shows system statistics via a REST API
 
 ---
 
-## Local Site (to run/test)
-Run this site locally using http://localhost:8080/home
-This site is not being hosted publicly.
+This site is just source code, not a live service
+
