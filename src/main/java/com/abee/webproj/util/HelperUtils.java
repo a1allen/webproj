@@ -10,4 +10,8 @@ public class HelperUtils {
     public static double roundDouble(double num) {
         return (Math.round(num * 10.0) / 10.0);
     }
+
+    public static long millisToSeconds(long millis) {
+        return (millis/1000);
+    }
 }

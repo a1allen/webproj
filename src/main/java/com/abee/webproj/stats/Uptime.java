@@ -1,11 +1,11 @@
 package com.abee.webproj.stats;
 
 public class Uptime {
-    private long uptimeMs;
+    private long uptimeSecs;
 
     public Uptime(long uptimeMs) {
-        this.uptimeMs = uptimeMs;
+        this.uptimeSecs = uptimeMs;
     }
 
-    public long getUptimeMs() {return uptimeMs;}
+    public long getUptime() {return uptimeSecs;}
 }

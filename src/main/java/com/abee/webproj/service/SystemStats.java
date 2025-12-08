@@ -12,10 +12,11 @@ import java.io.File;
 @Service
 public class SystemStats {
 
-    final static private OperatingSystemMXBean os =
+    private final OperatingSystemMXBean os =
             (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
+    private final File root = new File("/");
 
-    public static Memory getMemory() {
+    public Memory getMemory() {
         long totalRAM = HelperUtils.bytesToGB(os.getTotalMemorySize());
         long freeRAM = HelperUtils.bytesToGB(os.getFreeMemorySize());
         long usedRAM = totalRAM - freeRAM;
@@ -23,26 +24,29 @@ public class SystemStats {
         return new Memory(totalRAM, freeRAM, usedRAM);
     }
 
-    public static CPU getCPU() {
+    public CPU getCPU() {
         double cpuProcessLoad = HelperUtils.roundDouble(os.getProcessCpuLoad() * 100);
         double cpuSystemLoad = HelperUtils.roundDouble(os.getSystemCpuLoad() * 100);
+
+        //If value is not ready, catch negative values
+        if (cpuProcessLoad < 0) {cpuProcessLoad = 0;}
+        if (cpuSystemLoad < 0) {cpuSystemLoad = 0;}
+
         double cpuTotalLoad = cpuProcessLoad + cpuSystemLoad;
 
         return new CPU(cpuProcessLoad, cpuSystemLoad, cpuTotalLoad);
     }
 
-    public static DiskSpace getDiskSpace() {
-        File root = new File("/");
+    public DiskSpace getDiskSpace() {
         long totalDisk = HelperUtils.bytesToGB(root.getTotalSpace());
         long freeDisk = HelperUtils.bytesToGB(root.getFreeSpace());
 
         return new DiskSpace(totalDisk, freeDisk);
     }
 
-    public static Uptime getUptime() {
-        long uptimeMs = ManagementFactory.getRuntimeMXBean().getUptime();
-
-        return new Uptime(uptimeMs);
+    public Uptime getUptime() {
+        long uptimeSecs = HelperUtils.millisToSeconds(ManagementFactory.getRuntimeMXBean().getUptime());
+        return new Uptime(uptimeSecs);
     }
 
 }

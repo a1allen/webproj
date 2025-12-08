@@ -1,54 +1,67 @@
 package com.abee.webproj.controller;
 
+import com.abee.webproj.service.SystemStats;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.sun.management.OperatingSystemMXBean;
-import java.lang.management.ManagementFactory;
-import java.io.File;
 
 
 @RestController
+@RequestMapping("/api/stats")
 public class StatsAPIController {
-    File root = new File("/");
-    private final OperatingSystemMXBean os =
-            (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
 
-    // ---------------- Memory endpoints ----------------
-    @GetMapping("/api/stats/memory/total")
-    public long getTotalMemory() {
-        return os.getTotalMemorySize();
+    private final SystemStats systemStatsService;
+
+    public StatsAPIController(SystemStats statsService) {
+        this.systemStatsService = statsService;
     }
 
-    @GetMapping("/api/stats/memory/free")
+    // ---------------- Memory endpoints ----------------
+    @GetMapping("/memory/totalRAM")
+    public long getTotalMemory() {
+        return systemStatsService.getMemory().getTotalRAM();
+    }
+
+    @GetMapping("/memory/freeRAM")
     public long getFreeMemory() {
-        return os.getFreeMemorySize();
+        return systemStatsService.getMemory().getFreeRAM();
+    }
+
+    @GetMapping("/memory/usedRAM")
+    public long getUsedMemory() {
+        return systemStatsService.getMemory().getUsedRAM();
     }
 
     // ---------------- CPU endpoints ----------------
-    @GetMapping("/api/stats/cpu/process")
+    @GetMapping("/cpu/processCPU")
     public double getProcessCpu() {
-        return (os.getProcessCpuLoad() * 100);
+        return systemStatsService.getCPU().getCpuProcessLoad();
     }
 
-    @GetMapping("/api/stats/cpu/system")
+    @GetMapping("/cpu/systemCPU")
     public double getSystemCpu() {
-        return (os.getSystemCpuLoad() * 100);
+        return systemStatsService.getCPU().getCpuSystemLoad();
+    }
+
+    @GetMapping("/cpu/totalCPU")
+    public double getTotalCpu() {
+        return systemStatsService.getCPU().getCpuTotalLoad();
     }
 
     // ---------------- Disk space endpoints ----------------
-    @GetMapping("/api/stats/disk/totalSpace")
-    public double getTotalDisk() {
-        return (root.getTotalSpace());
+    @GetMapping("/disk/totalSpace")
+    public double getTotalDiskSpace() {
+        return systemStatsService.getDiskSpace().getTotalDisk();
     }
 
-    @GetMapping("/api/stats/disk/freeSpace")
-    public double getFreeDisk() {
-        return (root.getFreeSpace());
+    @GetMapping("/disk/freeSpace")
+    public double getFreeDiskSpace() {
+        return systemStatsService.getDiskSpace().getFreeDisk();
     }
 
     // ---------------- Uptime endpoints ----------------
-    @GetMapping("/api/stats/uptime")
-    public double getUptime() {
-        return (ManagementFactory.getRuntimeMXBean().getUptime());
+    @GetMapping("/uptime")
+    public double getUptimeJVM() {
+        return systemStatsService.getUptime().getUptime();
     }
 }
