@@ -1,8 +1,5 @@
 package com.abee.webproj.service;
-import com.abee.webproj.stats.CPU;
-import com.abee.webproj.stats.DiskSpace;
-import com.abee.webproj.stats.Memory;
-import com.abee.webproj.stats.Uptime;
+import com.abee.webproj.stats.*;
 import com.abee.webproj.util.HelperUtils;
 import com.sun.management.OperatingSystemMXBean;
 import org.springframework.stereotype.Service;
@@ -10,7 +7,7 @@ import java.lang.management.ManagementFactory;
 import java.io.File;
 
 @Service
-public class SystemStats {
+public class SystemStatsService {
 
     private final OperatingSystemMXBean os =
             (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
@@ -32,7 +29,7 @@ public class SystemStats {
         if (cpuProcessLoad < 0) {cpuProcessLoad = 0;}
         if (cpuSystemLoad < 0) {cpuSystemLoad = 0;}
 
-        double cpuTotalLoad = cpuProcessLoad + cpuSystemLoad;
+        double cpuTotalLoad = HelperUtils.roundDouble(cpuProcessLoad + cpuSystemLoad);
 
         return new CPU(cpuProcessLoad, cpuSystemLoad, cpuTotalLoad);
     }

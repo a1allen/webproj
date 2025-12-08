@@ -1,6 +1,7 @@
 package com.abee.webproj.controller;
 
-import com.abee.webproj.service.SystemStats;
+import com.abee.webproj.service.SystemStatsService;
+import com.abee.webproj.stats.AllStatsResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +11,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/api/stats")
 public class StatsAPIController {
 
-    private final SystemStats systemStatsService;
+    private final SystemStatsService systemStatsService;
 
-    public StatsAPIController(SystemStats statsService) {
+    public StatsAPIController(SystemStatsService statsService) {
         this.systemStatsService = statsService;
+    }
+
+    @GetMapping
+    public AllStatsResponse getAllStats() {
+        return new AllStatsResponse(
+            systemStatsService.getMemory(),
+            systemStatsService.getCPU(),
+            systemStatsService.getDiskSpace(),
+            systemStatsService.getUptime()
+        );
     }
 
     // ---------------- Memory endpoints ----------------
