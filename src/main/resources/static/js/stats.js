@@ -18,6 +18,11 @@ async function loadStats() {
 
     // Uptime
     document.getElementById("uptime").textContent = data.allUptime.uptime + " s";
+    //Todo
+    //get s
+    //if
+    //    s//60 > 1 then answer + m
+    //    if s//3600 > 1 then answer h
 }
 
 loadStats();

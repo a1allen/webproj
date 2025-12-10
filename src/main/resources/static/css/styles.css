@@ -1,35 +1,52 @@
 #header {
     text-align: center;
-    font-size: 28px;
-    margin-top: 20px;
-    margin-bottom: 25px;
+    font-size: 45px;
     font-weight: normal;
-    padding: 40px;
-    background-color: #f5f5f5;
+    padding-top: 40px;
+    font-family: Verdana, sans-serif;
 }
 
-table {
-    border: 1px solid black;
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
+body {
+    background: #111;
+    color: #ddd;
     font-family: Arial, sans-serif;
 }
 
+table {
+    font-size: 16px;
+    background: #1a1a1a;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 18%;
+    padding: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+tr {
+    border-top: 1px solid #D1D1D123;
+}
+
 th, td {
-    border: 1px solid black;
-    padding: 10px;
+    padding: 15px;
     font-weight: normal;
+    border-bottom: 1px solid #333;
+}
+
+tr:last-child td {
+    border-bottom: none;
 }
 
 th[colspan="2"] {
     text-align: left;
-    font-size: 18px;
-    padding: 10px;
+    background-color: #D1D1D113;
 }
 
 .numResult {
     text-align: center;
-    font-weight: normal;
+}
+
+.indentTitle {
+    padding-left: 40px;
 }
