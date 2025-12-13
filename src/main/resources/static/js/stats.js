@@ -1,28 +1,47 @@
+function formatUptime(seconds) {
+    if (seconds<60) {return `${seconds}s`;}
+
+    const days = Math.floor(seconds / 86400);
+    seconds %= 86400;
+
+    const hours = Math.floor(seconds / 3600);
+    seconds %= 3600;
+
+    const minutes = Math.floor(seconds / 60);
+    seconds %= 60;
+
+    return `${days}d ${hours}h ${minutes}m`;
+}
+
+function showMemory(memory) {
+    document.getElementById("freeMem").textContent = memory.freeRAM + " GB";
+    document.getElementById("usedMem").textContent = memory.usedRAM + " GB";
+    document.getElementById("totalMem").textContent = memory.totalRAM + " GB";
+}
+
+function showCPU(cpu) {
+    document.getElementById("processCpu").textContent = cpu.cpuProcessLoad + "%";
+    document.getElementById("systemCpu").textContent = cpu.cpuSystemLoad + "%";
+    document.getElementById("totalCpu").textContent = cpu.cpuTotalLoad + "%";
+}
+
+function showDisk(disk) {
+    document.getElementById("totalDisk").textContent = disk.totalDisk + " GB";
+    document.getElementById("freeDisk").textContent = disk.freeDisk + " GB";
+}
+
+function showUptime(uptimeS) {
+    document.getElementById("uptime").textContent = formatUptime(uptimeS);
+}
+
 async function loadStats() {
     const response = await fetch("/api/stats");
     const data = await response.json();
 
-    // Memory
-    document.getElementById("freeMem").textContent = data.allMemory.freeRAM + " GB";
-    document.getElementById("usedMem").textContent = data.allMemory.usedRAM + " GB";
-    document.getElementById("totalMem").textContent = data.allMemory.totalRAM + " GB";
-
-    // CPU
-    document.getElementById("processCpu").textContent = data.allCPU.cpuProcessLoad + "%";
-    document.getElementById("systemCpu").textContent = data.allCPU.cpuSystemLoad + "%";
-    document.getElementById("totalCpu").textContent = data.allCPU.cpuTotalLoad + "%";
-
-    // Disk
-    document.getElementById("totalDisk").textContent = data.allDisk.totalDisk + " GB";
-    document.getElementById("freeDisk").textContent = data.allDisk.freeDisk + " GB";
-
-    // Uptime
-    document.getElementById("uptime").textContent = data.allUptime.uptime + " s";
-    //Todo
-    //get s
-    //if
-    //    s//60 > 1 then answer + m
-    //    if s//3600 > 1 then answer h
+    showMemory(data.allMemory);
+    showCPU(data.allCPU);
+    showDisk(data.allDisk);
+    showUptime(data.allUptime.uptime);
 }
 
 loadStats();

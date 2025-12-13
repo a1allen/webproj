@@ -14,8 +14,8 @@ public class SystemStatsService {
     private final File root = new File("/");
 
     public Memory getMemory() {
-        long totalRAM = HelperUtils.bytesToGB(os.getTotalPhysicalMemorySize());
-        long freeRAM = HelperUtils.bytesToGB(os.getFreePhysicalMemorySize());
+        long totalRAM = HelperUtils.bytesToGB(os.getTotalMemorySize());
+        long freeRAM = HelperUtils.bytesToGB(os.getFreeMemorySize());
         long usedRAM = totalRAM - freeRAM;
 
         return new Memory(totalRAM, freeRAM, usedRAM);

@@ -50,3 +50,19 @@ th[colspan="2"] {
 .indentTitle {
     padding-left: 40px;
 }
+
+/* For tablets, make wider */
+@media (max-width: 1024px) {
+    table {
+        width: 40%;
+        font-size: 14px;
+    }
+}
+
+/* For phones, make larger */
+@media (max-width: 768px) {
+    table {
+        width: 80%;
+        font-size: 12px;
+    }
+}
