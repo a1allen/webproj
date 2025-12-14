@@ -53,26 +53,41 @@ th[colspan="2"] {
     padding-left: 40px;
 }
 
-/* For phones and tablets, make relative */
-@media (max-width: 1024px), (max-width: 768px) {
+/* For tablets, make relative */
+@media (max-width: 1024px) {
     #header {
-        font-size: 5vw;
-        padding-top: 2vh;
+        font-size: 6vw;
     }
-
     table {
-        width: 90vw;
-        max-width: 800px;
-        font-size: 2.5vw;
-        padding: 1vw;
+        width: 50%;
+        font-size: 3vw;
+        padding: 1.5vw;
         border-radius: 1vw;
     }
-
     th, td {
         padding: 1vw;
     }
-
     .indentTitle {
         padding-left: 4vw;
+    }
+}
+
+/* For phones, make relative */
+@media (max-width: 768px) {
+    #header {
+        font-size: 8vw;
+        padding-top: 3vh;
+    }
+    table {
+        width: 100%;
+        font-size: 4vw;
+        padding: 2vw;
+        border-radius: 1vw;
+    }
+    th, td {
+        padding: 1.5vw;
+    }
+    .indentTitle {
+        padding-left: 5vw;
     }
 }
