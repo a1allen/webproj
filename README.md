@@ -8,7 +8,7 @@ A simple Spring Boot web application that shows system statistics via a REST API
 
 ## Features
 
-- **Memory Stats**: Total RAM, free RAM, and used RAM
+- **JVM Heap Memory**: Used heap memory, available heap, maximum heap, heap utilization
 - **CPU Stats**: Process CPU load, system CPU load, total CPU load
 - **Disk Stats**: Total and free disk space
 - **Uptime**: JVM uptime in seconds
@@ -22,10 +22,11 @@ A simple Spring Boot web application that shows system statistics via a REST API
 ### All Stats (json object)
 - `GET /api/stats`
 
-### Memory
-- `GET /api/stats/memory/totalRAM` — Total RAM (GB)
-- `GET /api/stats/memory/freeRAM` — Free RAM (GB)
-- `GET /api/stats/memory/usedRAM` — Used RAM (GB)
+### Heap memory
+- `GET /api/stats/jvmHeap/heapUsed` — Used heap memory (MB)
+- `GET /api/stats/jvmHeap/heapAvailable` — Available heap memory (MB)
+- `GET /api/stats/jvmHeap/heapMax` — Max heap memory (MB)
+- `GET /api/stats/jvmHeap/heapUtilization` — Heap utilization (%)
 
 ### CPU
 - `GET /api/stats/cpu/processCPU` — Process CPU load (%)
