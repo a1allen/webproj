@@ -1,8 +1,9 @@
 # Web Project - System Stats Dashboard 
 (Work in Progress)
 
-A simple Spring Boot web application that shows system statistics via a REST API and displays them on a web dashboard. This project is primarily for learning and experimentation with Java, Spring Boot, and frontend integration.
+A simple Spring Boot web application that shows system statistics via a REST API and displays them on a web dashboard. This project is primarily for learning and experimentation with Java, Spring Boot, HTML, CSS, and JavaScript.
 
+![Example Dashboard](readme-files/example-dash.png)
 ---
 
 ## Features
@@ -40,5 +41,5 @@ A simple Spring Boot web application that shows system statistics via a REST API
 
 ---
 
-This site is just source code, not a live service
+This site can be reached at https://webproj-production.up.railway.app/
 
