@@ -1,11 +1,11 @@
 package com.abee.webproj.stats;
 
-public class Memory {
+public class RAM {
     private long totalRAM;
     private long freeRAM;
     private long usedRAM;
 
-    public Memory(long totalRAM, long freeRAM, long usedRAM) {
+    public RAM(long totalRAM, long freeRAM, long usedRAM) {
         this.totalRAM = totalRAM;
         this.freeRAM = freeRAM;
         this.usedRAM = usedRAM;

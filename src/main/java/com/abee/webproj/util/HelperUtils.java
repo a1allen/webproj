@@ -7,6 +7,10 @@ public class HelperUtils {
         return (bytes/1073741824);
     }
 
+    public static long bytesToMB(long bytes) {
+        return (bytes/1048576);
+    }
+
     public static double roundDouble(double num) {
         return (Math.round(num * 10.0) / 10.0);
     }

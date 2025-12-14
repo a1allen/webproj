@@ -20,27 +20,28 @@ public class StatsAPIController {
     @GetMapping
     public AllStatsResponse getAllStats() {
         return new AllStatsResponse(
-            systemStatsService.getMemory(),
+            systemStatsService.getRAM(),
             systemStatsService.getCPU(),
             systemStatsService.getDiskSpace(),
-            systemStatsService.getUptime()
+            systemStatsService.getUptime(),
+            systemStatsService.getJvmHeap()
         );
     }
 
     // ---------------- Memory endpoints ----------------
-    @GetMapping("/memory/totalRAM")
-    public long getTotalMemory() {
-        return systemStatsService.getMemory().getTotalRAM();
+    @GetMapping("/ram/totalRAM")
+    public long getTotalRAM() {
+        return systemStatsService.getRAM().getTotalRAM();
     }
 
-    @GetMapping("/memory/freeRAM")
-    public long getFreeMemory() {
-        return systemStatsService.getMemory().getFreeRAM();
+    @GetMapping("/ram/freeRAM")
+    public long getFreeRAM() {
+        return systemStatsService.getRAM().getFreeRAM();
     }
 
-    @GetMapping("/memory/usedRAM")
-    public long getUsedMemory() {
-        return systemStatsService.getMemory().getUsedRAM();
+    @GetMapping("/ram/usedRAM")
+    public long getUsedRAM() {
+        return systemStatsService.getRAM().getUsedRAM();
     }
 
     // ---------------- CPU endpoints ----------------
@@ -74,5 +75,26 @@ public class StatsAPIController {
     @GetMapping("/uptime")
     public double getUptimeJVM() {
         return systemStatsService.getUptime().getUptime();
+    }
+
+    // ---------------- JVM heap endpoints ----------------
+    @GetMapping("/jvmHeap/heapUsed")
+    public long getUsedJvmHeap() {
+        return systemStatsService.getJvmHeap().getHeapUsed();
+    }
+
+    @GetMapping("/jvmHeap/heapAvailable")
+    public long getAvailableJvmHeap() {
+        return systemStatsService.getJvmHeap().getHeapAvailable();
+    }
+
+    @GetMapping("/jvmHeap/heapMax")
+    public long getMaxJvmHeap() {
+        return systemStatsService.getJvmHeap().getHeapMax();
+    }
+
+    @GetMapping("/jvmHeap/heapUtilization")
+    public double getUtilizationJvmHeap() {
+        return systemStatsService.getJvmHeap().getHeapUtilization();
     }
 }

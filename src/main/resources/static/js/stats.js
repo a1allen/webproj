@@ -1,6 +1,4 @@
 function formatUptime(seconds) {
-    if (seconds<60) {return `${seconds}s`;}
-
     const days = Math.floor(seconds / 86400);
     seconds %= 86400;
 
@@ -10,13 +8,17 @@ function formatUptime(seconds) {
     const minutes = Math.floor(seconds / 60);
     seconds %= 60;
 
-    return `${days}d ${hours}h ${minutes}m`;
+    if (days>0) {return `${days}d ${hours}h ${minutes}m`;}
+    if (hours>0) {return `${hours}h ${minutes}m ${seconds}s`;}
+    if (minutes>0) {return `${minutes}m ${seconds}s`;}
+    return `${seconds}s`;
 }
 
-function showMemory(memory) {
-    document.getElementById("freeMem").textContent = memory.freeRAM + " GB";
-    document.getElementById("usedMem").textContent = memory.usedRAM + " GB";
-    document.getElementById("totalMem").textContent = memory.totalRAM + " GB";
+function showJVMHeap(jvmHeap) {
+    document.getElementById("usedHeap").textContent = jvmHeap.heapUsed + " MB";
+    document.getElementById("availableHeap").textContent = jvmHeap.heapAvailable + " MB";
+    document.getElementById("maxHeap").textContent = jvmHeap.heapMax + " MB";
+    document.getElementById("heapUtilization").textContent = jvmHeap.heapUtilization + "%";
 }
 
 function showCPU(cpu) {
@@ -38,7 +40,7 @@ async function loadStats() {
     const response = await fetch("/api/stats");
     const data = await response.json();
 
-    showMemory(data.allMemory);
+    showJVMHeap(data.jvmHeap);
     showCPU(data.allCPU);
     showDisk(data.allDisk);
     showUptime(data.allUptime.uptime);
