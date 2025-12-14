@@ -62,7 +62,7 @@ th[colspan="2"] {
         width: 65%;
         font-size: 3.5vw;
         padding: 1.5vw;
-        border-radius: 1vw;
+        border-radius: 4vw;
     }
     th, td {
         padding: 2.5vw;
@@ -82,7 +82,7 @@ th[colspan="2"] {
         width: 75%;
         font-size: 4vw;
         padding: 2vw;
-        border-radius: 1vw;
+        border-radius: 4vw;
     }
     th, td {
         padding: 2.5vw;
