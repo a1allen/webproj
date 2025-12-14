@@ -1,6 +1,4 @@
 function formatUptime(seconds) {
-    if (seconds<60) {return `${seconds}s`;}
-
     const days = Math.floor(seconds / 86400);
     seconds %= 86400;
 
@@ -10,7 +8,10 @@ function formatUptime(seconds) {
     const minutes = Math.floor(seconds / 60);
     seconds %= 60;
 
-    return `${days}d ${hours}h ${minutes}m`;
+    if (days>0) {return `${days}d ${hours}h ${minutes}m`;}
+    if (hours>0) {return `${hours}h ${minutes}m ${seconds}s`;}
+    if (minutes>0) {return `${minutes}m ${seconds}s`;}
+    return `${seconds}s`;
 }
 
 function showMemory(memory) {
