@@ -20,7 +20,7 @@ public class StatsAPIController {
     @GetMapping
     public AllStatsResponse getAllStats() {
         return new AllStatsResponse(
-            systemStatsService.getMemory(),
+            systemStatsService.getRAM(),
             systemStatsService.getCPU(),
             systemStatsService.getDiskSpace(),
             systemStatsService.getUptime()
@@ -28,19 +28,19 @@ public class StatsAPIController {
     }
 
     // ---------------- Memory endpoints ----------------
-    @GetMapping("/memory/totalRAM")
-    public long getTotalMemory() {
-        return systemStatsService.getMemory().getTotalRAM();
+    @GetMapping("/ram/totalRAM")
+    public long getTotalRAM() {
+        return systemStatsService.getRAM().getTotalRAM();
     }
 
-    @GetMapping("/memory/freeRAM")
-    public long getFreeMemory() {
-        return systemStatsService.getMemory().getFreeRAM();
+    @GetMapping("/ram/freeRAM")
+    public long getFreeRAM() {
+        return systemStatsService.getRAM().getFreeRAM();
     }
 
-    @GetMapping("/memory/usedRAM")
-    public long getUsedMemory() {
-        return systemStatsService.getMemory().getUsedRAM();
+    @GetMapping("/ram/usedRAM")
+    public long getUsedRAM() {
+        return systemStatsService.getRAM().getUsedRAM();
     }
 
     // ---------------- CPU endpoints ----------------

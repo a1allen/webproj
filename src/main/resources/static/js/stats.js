@@ -14,10 +14,10 @@ function formatUptime(seconds) {
     return `${seconds}s`;
 }
 
-function showMemory(memory) {
-    document.getElementById("freeMem").textContent = memory.freeRAM + " GB";
-    document.getElementById("usedMem").textContent = memory.usedRAM + " GB";
-    document.getElementById("totalMem").textContent = memory.totalRAM + " GB";
+function showRAM(ram) {
+    document.getElementById("freeRAM").textContent = ram.freeRAM + " GB";
+    document.getElementById("usedRAM").textContent = ram.usedRAM + " GB";
+    document.getElementById("totalRAM").textContent = ram.totalRAM + " GB";
 }
 
 function showCPU(cpu) {
@@ -39,7 +39,7 @@ async function loadStats() {
     const response = await fetch("/api/stats");
     const data = await response.json();
 
-    showMemory(data.allMemory);
+    showRAM(data.allRAM);
     showCPU(data.allCPU);
     showDisk(data.allDisk);
     showUptime(data.allUptime.uptime);

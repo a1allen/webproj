@@ -13,12 +13,12 @@ public class SystemStatsService {
             (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
     private final File root = new File("/");
 
-    public Memory getMemory() {
+    public RAM getRAM() {
         long totalRAM = HelperUtils.bytesToGB(os.getTotalMemorySize());
         long freeRAM = HelperUtils.bytesToGB(os.getFreeMemorySize());
         long usedRAM = totalRAM - freeRAM;
 
-        return new Memory(totalRAM, freeRAM, usedRAM);
+        return new RAM(totalRAM, freeRAM, usedRAM);
     }
 
     public CPU getCPU() {
