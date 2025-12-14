@@ -11,54 +11,71 @@
 <body>
     <h1 id="header">SYSTEM STATS</h1>
     <table>
-        <tr>
-            <th colspan="2">System Uptime</th>
-        </tr>
-        <tr>
-            <td class="indentTitle">Uptime</td>
-            <td class="numResult"><span id="uptime"></span></td>
-        </tr>
-        <tr>
-            <th colspan="2">CPU</th>
-        </tr>
-        <tr>
-            <td class="indentTitle">System CPU</td>
-            <td class="numResult"><span id="systemCpu"></span></td>
-        </tr>
-        <tr>
-            <td class="indentTitle">Process CPU</td>
-            <td class="numResult"><span id="processCpu"></span></td>
-        </tr>
-        <tr>
-            <td class="indentTitle">Total CPU</td>
-            <td class="numResult"><span id="totalCpu"></span></td>
-        </tr>
-        <tr>
-            <th colspan="2">Disk</th>
-        </tr>
-        <tr>
-            <td class="indentTitle">Total Disk</td>
-            <td class="numResult"><span id="totalDisk"></span></td>
-        </tr>
-        <tr>
-            <td class="indentTitle">Free Disk</td>
-            <td class="numResult"><span id="freeDisk"></span></td>
-        </tr>
-        <tr>
-            <th colspan="2">RAM</th>
-        </tr>
-        <tr>
-            <td class="indentTitle">Used RAM</td>
-            <td class="numResult"><span id="usedRAM"></span></td>
-        </tr>
-        <tr>
-            <td class="indentTitle">Free RAM</td>
-            <td class="numResult"><span id="freeRAM"></span></td>
-        </tr>
-        <tr>
-            <td class="indentTitle">Total RAM</td>
-            <td class="numResult"><span id="totalRAM"></span></td>
-        </tr>
+
+        <tbody>
+            <tr>
+                <th colspan="2">System Uptime</th>
+            </tr>
+            <tr>
+                <td class="indentTitle">Uptime</td>
+                <td class="numResult"><span id="uptime"></span></td>
+            </tr>
+        </tbody>
+
+        <tbody>
+            <tr>
+                <th colspan="2">CPU</th>
+            </tr>
+            <tr>
+                <td class="indentTitle">System CPU</td>
+                <td class="numResult"><span id="systemCpu"></span></td>
+            </tr>
+            <tr>
+                <td class="indentTitle">Process CPU</td>
+                <td class="numResult"><span id="processCpu"></span></td>
+            </tr>
+            <tr>
+                <td class="indentTitle">Total CPU</td>
+                <td class="numResult"><span id="totalCpu"></span></td>
+            </tr>
+        </tbody>
+
+        <tbody>
+            <tr>
+                <th colspan="2">Disk</th>
+            </tr>
+            <tr>
+                <td class="indentTitle">Total Disk</td>
+                <td class="numResult"><span id="totalDisk"></span></td>
+            </tr>
+            <tr>
+                <td class="indentTitle">Free Disk</td>
+                <td class="numResult"><span id="freeDisk"></span></td>
+            </tr>
+        </tbody>
+
+        <tbody>
+            <tr>
+                <th colspan="2">JVM Heap Memory</th>
+            </tr>
+            <tr>
+                <td class="indentTitle">Used Heap</td>
+                <td class="numResult"><span id="usedHeap"></span></td>
+            </tr>
+            <tr>
+                <td class="indentTitle">Available Heap</td>
+                <td class="numResult"><span id="availableHeap"></span></td>
+            </tr>
+            <tr>
+                <td class="indentTitle">Maximum Heap</td>
+                <td class="numResult"><span id="maxHeap"></span></td>
+            </tr>
+            <tr>
+                <td class="indentTitle">Heap Utilization</td>
+                <td class="numResult"><span id="heapUtilization"></span></td>
+            </tr>
+        </tbody>
+
     </table>
     <script src="/js/stats.js"></script>
 </body>

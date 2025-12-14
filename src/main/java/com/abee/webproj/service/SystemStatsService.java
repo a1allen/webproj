@@ -5,6 +5,7 @@ import com.sun.management.OperatingSystemMXBean;
 import org.springframework.stereotype.Service;
 import java.lang.management.ManagementFactory;
 import java.io.File;
+import java.lang.management.MemoryUsage;
 
 @Service
 public class SystemStatsService {
@@ -12,6 +13,8 @@ public class SystemStatsService {
     private final OperatingSystemMXBean os =
             (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
     private final File root = new File("/");
+    private final MemoryUsage heapUsage = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
+    private final Runtime runtime = Runtime.getRuntime();
 
     public RAM getRAM() {
         long totalRAM = HelperUtils.bytesToGB(os.getTotalMemorySize());
@@ -44,6 +47,15 @@ public class SystemStatsService {
     public Uptime getUptime() {
         long uptimeSecs = HelperUtils.millisToSeconds(ManagementFactory.getRuntimeMXBean().getUptime());
         return new Uptime(uptimeSecs);
+    }
+
+    public JvmHeap getJvmHeap() {
+        long heapUsed = HelperUtils.bytesToMB(heapUsage.getUsed());
+        long heapAvailable = HelperUtils.bytesToMB(runtime.totalMemory());
+        long heapMax = HelperUtils.bytesToMB(runtime.maxMemory());
+        double heapUtilization = HelperUtils.roundDouble(((double) heapUsed /heapMax) * 100);
+
+        return new JvmHeap(heapUsed, heapAvailable, heapMax, heapUtilization);
     }
 
 }
